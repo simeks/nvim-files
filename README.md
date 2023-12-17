@@ -1,13 +1,15 @@
 # nvim
 
-Uses https://www.lazyvim.org/
-
 ## Prereq
 
 ### Windows
 
 ```
-> choco install powershell-core neovim ripgrep fd firacodenf
+> choco install powershell-core
+> choco install neovim
+> choco install ripgrep
+> choco install fd
+> choco install firacodenf
 ```
 
 #### Windows terminal
@@ -27,10 +29,11 @@ Uses https://www.lazyvim.org/
         }
     }
 ```
-https://github.com/rebelot/kanagawa.nvim/blob/master/extras/windows_terminal.json
 
 #### Treesitter
 
 https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support
 
-Run from prompt with vcvars.bat applied to get access to cl.exe.
+## Reference
+
+* https://github.com/albingroen/quick.nvim
