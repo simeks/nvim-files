@@ -1,6 +1,0 @@
-require("simon.plugins")
-require("simon.keymaps")
-require("simon.options")
-require("simon.colorscheme")
-require("simon.lsp")
-require("simon.cmp")
