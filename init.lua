@@ -303,6 +303,7 @@ require('lazy').setup({
     "zbirenbaum/copilot-cmp",
     opts = {}
   },
+  'eandrju/cellular-automaton.nvim',
 }, {})
 
 -- [[ Setting options ]]
