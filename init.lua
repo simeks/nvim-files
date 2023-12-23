@@ -291,19 +291,19 @@ require('lazy').setup({
   {
     --"github/copilot.vim",
     "zbirenbaum/copilot.lua",
-    opts = function()
-      -- copilot will be managed through cmp using copilot-cmp
-      return {
-        suggestion = { enabled = false },
-        panel = { enabled = false },
-      }
+    config = function()
+      require("copilot").setup({
+        suggestion = { enabled = true, auto_trigger = true, accept = true, },
+        panel = { enabled = false, },
+      })
     end
   },
-  {
-    "zbirenbaum/copilot-cmp",
-    opts = {}
-  },
+  -- {
+  --   "zbirenbaum/copilot-cmp",
+  --   opts = {}
+  -- },
   'eandrju/cellular-automaton.nvim',
+  'tikhomirov/vim-glsl',
 }, {})
 
 -- [[ Setting options ]]
@@ -667,6 +667,7 @@ require('lspconfig').clangd.setup {
       "--offset-encoding=utf-16",
   },
 }
+require('lspconfig').glsl_analyzer.setup{}
 
 
 
@@ -677,6 +678,12 @@ local luasnip = require 'luasnip'
 require('luasnip.loaders.from_vscode').lazy_load()
 luasnip.config.setup {}
 
+local has_words_before = function()
+  unpack = unpack or table.unpack
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+
 cmp.setup {
   snippet = {
     expand = function(args)
@@ -684,6 +691,7 @@ cmp.setup {
     end,
   },
   completion = {
+    autocomplete = false,
     completeopt = 'menu,menuone,noinsert',
   },
   mapping = cmp.mapping.preset.insert {
@@ -691,7 +699,7 @@ cmp.setup {
     ['<C-p>'] = cmp.mapping.select_prev_item(),
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete {},
+    ['<C-g>'] = cmp.mapping.complete {},
     ['<CR>'] = cmp.mapping.confirm {
       select = false,
     },
@@ -700,6 +708,8 @@ cmp.setup {
         cmp.select_next_item()
       elseif luasnip.expand_or_locally_jumpable() then
         luasnip.expand_or_jump()
+      elseif has_words_before() then
+        cmp.complete()
       else
         fallback()
       end
@@ -715,7 +725,6 @@ cmp.setup {
     end, { 'i', 's' }),
   },
   sources = {
-    { name = 'copilot' },
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = 'path' },
