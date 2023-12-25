@@ -48,34 +48,61 @@ install to path
 | `i`     | N | Insert before
 | `a`     | N | Insert after (append)
 | `c`     | V | Remove selection and insert
+| `==`    | N | Autoindent
 
 
 ### Movement
 | Cmd     |   | Desc
 |---------|---|--------------
+| `w`     | N | Next word
+| `e`     | N | Next end of word
+| `b`     | N | Prev word
+| `<C-u>` | N | Move half page up
+| `<C-d>` | N | Move half page down
 | `<C-y>` | N | Move screen up
 | `<C-e>` | N | Move screen down
 | `zz`    | N | Move screen to center cursor
 | `zt`    | N | Move screen to put cursor on top
+| `%`     | N | Move to matching pair
+| `[m`    | N | Prev method start (`M` end)
+| `]m`    | N | Next method start (`M` end)
+| `;`     | N | Repeat motion
+| `,`     | N | Repeat motion backwards
+| `{`     | N | Prev empty line
+| `}`     | N | Next empty line
+
+#### Horizontal
+| `F*`    | N | Prev *
+| `f*`    | N | Next *
+| `T*`    | N | (char before) Prev *
+| `t*`    | N | (char before) Next *
+
 
 ### Selection
-| Cmd     |   | Desc
-|---------|---|------------------
-| `v`     | N | Select characters
-| `V`     | N | Select lines
-| `<C-q>` | N | Select block
-| `gv`    | N | Reselect previous selection
+| Cmd     |    | Desc
+|---------|----|------------------
+| ` y`    | NV | Yank to OS clipboard
+| `v`     | N  | Select characters
+| `V`     | N  | Select lines
+| `<C-q>` | N  | Select block
+| `O`     | V  | Swap end
+| `gv`    | N  | Reselect previous selection
+| `vf,`   | N  | Select up to ,
+| `vi(`   | N  | Select inside ()
+| `va(`   | N  | Select around ()
+| `yi(`   | N  | Yank inside ()
+| `ya(`   | N  | Yank around ()
+| `di(`   | N  | Delete inside ()
+| `da(`   | N  | Delete around ()
+| `ci(`   | N  | Replace inside ()
+| `ca(`   | N  | Replace around ()
+
 
 ### Modify selections
 | Cmd     |   | Desc
 |---------|---|------------------
 | `I`     | V | Insert before selection (multi-line)
 | `A`     | V | Insert after selection (multi-line)
-
-### Cool
-
-* `:CellularAutomaton make_it_rain`
-* ` ts` switch between themes.
 
 ### Copilot
 
@@ -90,12 +117,16 @@ install to path
 
 | Cmd         |   | Desc
 |-------------|---|------------------
-| `<C-g>` | I | Complete
+| `<C-g>`     | I | Complete
 | `<C-e>`     | I | Abort (close window)
 | `<C-n>`     | I | Select next item
 | `<C-p>`     | I | Select prev item
 | `<C-d>`     | I | Scroll docs(-4)
 | `<C-f>`     | I | Scroll docs(4)
 
+### Cool
+
+* `:CellularAutomaton make_it_rain`
+* ` ts` switch between themes.
 
 
