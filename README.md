@@ -49,6 +49,8 @@ install to path
 | `a`     | N | Insert after (append)
 | `c`     | V | Remove selection and insert
 | `==`    | N | Autoindent
+| `<C-a>` | N | Increment number
+| `<C-x>` | N | Decrement number
 
 
 ### Movement

@@ -304,6 +304,12 @@ require('lazy').setup({
   -- },
   'eandrju/cellular-automaton.nvim',
   'tikhomirov/vim-glsl',
+  {
+    'akinsho/bufferline.nvim',
+    config = function()
+      require('bufferline').setup({})
+    end,
+  },
 }, {})
 
 -- [[ Setting options ]]
@@ -347,6 +353,12 @@ vim.o.completeopt = 'menuone,noselect'
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
+
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
+vim.opt.smartindent = true
 
 -- White space characters
 vim.opt.list = true
